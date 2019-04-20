@@ -1,2 +1,16 @@
-Option +Indexes
+RewriteEngine On
+RewriteBase /
+
+# if request is not for a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# if request is not for a file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?r=$1 [L,QSA]
+
+ErrorDocument 401 /
+ErrorDocument 403 /
+ErrorDocument 404 /
+ErrorDocument 500 /
+ErrorDocument 501 /
+
 ServerSignature ON
